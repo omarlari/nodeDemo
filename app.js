@@ -16,7 +16,7 @@ var connection  = require('express-myconnection');
 var mysql = require('mysql');
 
 // all environments
-app.set('port', process.env.PORT || 4300);
+app.set('port', process.env.PORT || 4443);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.use(express.favicon());
@@ -41,9 +41,9 @@ app.use(
     
     connection(mysql,{
         
-        host: 'localhost',
+        host: 'demo.cab5uleozjrw.us-west-2.rds.amazonaws.com',
         user: 'root',
-        password : '',
+        password : 'English101',
         port : 3306, //port mysql
         database:'nodejs'
 

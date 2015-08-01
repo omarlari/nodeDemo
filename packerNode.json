@@ -1,0 +1,24 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "",
+      "secret_key": "",
+      "region": "us-west-2",
+      "source_ami": "ami-8d030dbd",
+      "instance_type": "t2.micro",
+      "ssh_username": "ec2-user",
+      "ami_name": "node {{timestamp}}",
+      "vpc_id": "vpc-2f8b184a",
+      "subnet_id": "subnet-93f381f6",
+      "associate_public_ip_address": "true"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "ansible-local",
+      "playbook_file": "nodeLocal.yml"
+    }
+  ]
+}

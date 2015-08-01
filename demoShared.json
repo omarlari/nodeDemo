@@ -1,0 +1,476 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description" : "",
+    "Parameters" : {
+        "vpc" : {
+            "Description" : "VpcId",
+            "Type" : "String",
+            "Default" : "",
+            "ConstraintDescription" : ""
+        },
+        "secondOctect" : {
+            "Description" : "",
+            "Type" : "String",
+            "Default" : "",
+            "ConstraintDescription" : ""
+        },
+        "rootDbPassword" : {
+            "Description" : "",
+            "Type" : "String",
+            "Default" : "English101",
+            "ConstraintDescription" : ""
+        }
+    },
+    "Resources" : {
+
+        "demoAppNodejsSubnetA" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "AvailabilityZone" : "us-west-2a",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "CidrBlock" : {
+                    "Fn::Join" : [
+                        "",
+                        [
+                            "10.",
+                            {
+                                "Ref" : "secondOctect"
+                            },
+                            ".11",
+                            ".0",
+                            "/24"
+                        ]
+                    ]
+                },
+                "Tags" : [
+                    {
+                        "Key" : "Application",
+                        "Value" : {
+                            "Ref" : "AWS::StackName"
+                        }
+                    },
+                    {
+                        "Key" : "Network",
+                        "Value" : "Public"
+                    }
+                ]
+            }
+        },
+
+        "demoAppNodejsSubnetB" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "AvailabilityZone" : "us-west-2b",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "CidrBlock" : {
+                    "Fn::Join" : [
+                        "",
+                        [
+                            "10.",
+                            {
+                                "Ref" : "secondOctect"
+                            },
+                            ".12",
+                            ".0",
+                            "/24"
+                        ]
+                    ]
+                },
+                "Tags" : [
+                    {
+                        "Key" : "Application",
+                        "Value" : {
+                            "Ref" : "AWS::StackName"
+                        }
+                    },
+                    {
+                        "Key" : "Network",
+                        "Value" : "Public"
+                    }
+                ]
+            }
+        },
+
+        "demoAppNodejsSubnetC" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "AvailabilityZone" : "us-west-2c",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "CidrBlock" : {
+                    "Fn::Join" : [
+                        "",
+                        [
+                            "10.",
+                            {
+                                "Ref" : "secondOctect"
+                            },
+                            ".13",
+                            ".0",
+                            "/24"
+                        ]
+                    ]
+                },
+                "Tags" : [
+                    {
+                        "Key" : "Application",
+                        "Value" : {
+                            "Ref" : "AWS::StackName"
+                        }
+                    },
+                    {
+                        "Key" : "Network",
+                        "Value" : "Public"
+                    }
+                ]
+            }
+        },
+
+        "demoAppDbSubnetA" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "AvailabilityZone" : "us-west-2a",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "CidrBlock" : {
+                    "Fn::Join" : [
+                        "",
+                        [
+                            "10.",
+                            {
+                                "Ref" : "secondOctect"
+                            },
+                            ".21",
+                            ".0",
+                            "/24"
+                        ]
+                    ]
+                },
+                "Tags" : [
+                    {
+                        "Key" : "Application",
+                        "Value" : {
+                            "Ref" : "AWS::StackName"
+                        }
+                    },
+                    {
+                        "Key" : "Network",
+                        "Value" : "Public"
+                    }
+                ]
+            }
+        },
+
+        "demoAppDbSubnetB" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "AvailabilityZone" : "us-west-2b",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "CidrBlock" : {
+                    "Fn::Join" : [
+                        "",
+                        [
+                            "10.",
+                            {
+                                "Ref" : "secondOctect"
+                            },
+                            ".22",
+                            ".0",
+                            "/24"
+                        ]
+                    ]
+                },
+                "Tags" : [
+                    {
+                        "Key" : "Application",
+                        "Value" : {
+                            "Ref" : "AWS::StackName"
+                        }
+                    },
+                    {
+                        "Key" : "Network",
+                        "Value" : "Public"
+                    }
+                ]
+            }
+        },
+
+        "demoAppDbSubnetC" : {
+            "Type" : "AWS::EC2::Subnet",
+            "Properties" : {
+                "AvailabilityZone" : "us-west-2c",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "CidrBlock" : {
+                    "Fn::Join" : [
+                        "",
+                        [
+                            "10.",
+                            {
+                                "Ref" : "secondOctect"
+                            },
+                            ".23",
+                            ".0",
+                            "/24"
+                        ]
+                    ]
+                },
+                "Tags" : [
+                    {
+                        "Key" : "Application",
+                        "Value" : {
+                            "Ref" : "AWS::StackName"
+                        }
+                    },
+                    {
+                        "Key" : "Network",
+                        "Value" : "Public"
+                    }
+                ]
+            }
+        },
+
+        "demoRdsSubnetGroup" : {
+            "Type" : "AWS::RDS::DBSubnetGroup",
+            "Properties" : {
+                "DBSubnetGroupDescription" : "Availability Zones for RDS DB",
+                "SubnetIds" : [
+                    {
+                        "Ref" : "demoAppDbSubnetA"
+                    },
+                    {
+                        "Ref" : "demoAppDbSubnetB"
+                    }
+                ]
+            }
+        },
+
+        "demoAppRds" : {
+            "Type" : "AWS::RDS::DBInstance",
+            "Properties" : {
+                "AllocatedStorage" : "200",
+                "AllowMajorVersionUpgrade" : "false",
+                "BackupRetentionPeriod" : "30",
+                "DBInstanceClass" : "db.t1.micro",
+                "DBInstanceIdentifier" : "demo",
+                "DBName" : "demoNodejsApp",
+                "DBSubnetGroupName" : {
+                    "Ref" : "demoRdsSubnetGroup"
+                },
+                "Engine" : "MySQL",
+                "Iops" : "1000",
+                "MasterUsername" : "root",
+                "MasterUserPassword" : {
+                    "Ref" : "rootDbPassword"
+                },
+                "MultiAZ" : "true",
+                "PreferredBackupWindow" : "2:00-2:30",
+                "PreferredMaintenanceWindow" : "sat:03:00-sat:03:30",
+                "VPCSecurityGroups" : [
+                    {
+                        "Ref" : "demoAppDbSg"
+                    }
+                ]
+            }
+        },
+
+        "demoAppElbSg" : {
+            "Type" : "AWS::EC2::SecurityGroup",
+            "Properties" : {
+                "GroupDescription" : "elb security group",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "SecurityGroupIngress" : [
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : "0.0.0.0/0",
+                        "FromPort" : "80",
+                        "ToPort" : "80"
+                    }
+                ]
+            }
+        },
+
+        "demoAppEgress0201" : {
+            "Type" : "AWS::EC2::SecurityGroupEgress",
+            "Properties" : {
+                "GroupId" : {
+                    "Ref" : "demoAppElbSg"
+                },
+                "IpProtocol" : "tcp",
+                "FromPort" : "4443",
+                "ToPort" : "4443",
+                "DestinationSecurityGroupId" : {
+                    "Ref" : "demoAppNodeSg"
+                }
+            }
+        },
+
+        "demoAppNodeSg" : {
+            "Type" : "AWS::EC2::SecurityGroup",
+            "Properties" : {
+                "GroupDescription" : "app security group",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "SecurityGroupIngress" : [
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "4443",
+                        "ToPort" : "4443",
+                        "CidrIp" : "67.188.201.39/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "22",
+                        "ToPort" : "22",
+                        "CidrIp" : "67.188.201.39/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "4443",
+                        "ToPort" : "4443",
+                        "CidrIp" : "12.130.117.130/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "22",
+                        "ToPort" : "22",
+                        "CidrIp" : "12.130.117.130/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "4443",
+                        "ToPort" : "4443",
+                        "CidrIp" : "143.112.144.129/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "22",
+                        "ToPort" : "22",
+                        "CidrIp" : "143.112.144.129/32"
+                    }
+                ],
+                "SecurityGroupEgress" : [
+                    {
+                        "IpProtocol" : "-1",
+                        "CidrIp" : "0.0.0.0/0"
+                    }
+                ]
+        }},
+
+        "demoAppIngress0201" : {
+            "Type" : "AWS::EC2::SecurityGroupIngress",
+            "Properties" : {
+                "GroupId" : {
+                    "Ref" : "demoAppNodeSg"
+                },
+                "IpProtocol" : "tcp",
+                "FromPort" : "4443",
+                "ToPort" : "4443",
+                "SourceSecurityGroupId" : {
+                    "Ref" : "demoAppElbSg"
+                }
+            }
+        },
+
+        "demoAppEgress0201" : {
+            "Type" : "AWS::EC2::SecurityGroupEgress",
+            "Properties" : {
+                "GroupId" : {
+                    "Ref" : "demoAppNodeSg"
+                },
+                "IpProtocol" : "tcp",
+                "FromPort" : "3306",
+                "ToPort" : "3306",
+                "DestinationSecurityGroupId" : {
+                    "Ref" : "demoAppDbSg"
+                }
+            }
+        },
+
+        "demoAppDbSg" : {
+            "Type" : "AWS::EC2::SecurityGroup",
+            "Properties" : {
+                "GroupDescription" : "elb security group",
+                "VpcId" : {
+                    "Ref" : "vpc"
+                },
+                "SecurityGroupIngress" : [
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : "0.0.0.0/0",
+                        "FromPort" : "80",
+                        "ToPort" : "80"
+                    }
+                ]
+            }
+        },
+
+        "demoDbIngress0301" : {
+            "Type" : "AWS::EC2::SecurityGroupIngress",
+            "Properties" : {
+                "GroupId" : {
+                    "Ref" : "demoAppDbSg"
+                },
+                "IpProtocol" : "tcp",
+                "FromPort" : "3306",
+                "ToPort" : "3306",
+                "SourceSecurityGroupId" : {
+                    "Ref" : "demoAppNodeSg"
+                }
+            }
+        }
+
+    },
+    "Outputs" : {
+
+        "demoAppNodejsSubnetA" : {
+            "Value" : {
+                "Ref" : "demoAppNodejsSubnetA"
+            },
+            "Description" : "node subnet A"
+        },
+
+        "demoAppNodejsSubnetB" : {
+            "Value" : {
+                "Ref" : "demoAppNodejsSubnetB"
+            },
+            "Description" : "node subnet B"
+        },
+
+        "demoAppNodejsSubnetC" : {
+            "Value" : {
+                "Ref" : "demoAppNodejsSubnetC"
+            },
+            "Description" : "node subnet C"
+        },
+
+        "demoAppNodeSg" : {
+            "Value" : {
+                "Ref" : "demoAppNodeSg"
+            },
+            "Description" : "node security group"
+        },
+
+        "demoAppElbSg" : {
+            "Value" : {
+                "Ref" : "demoAppElbSg"
+            },
+            "Description" : "mysql security group"
+        }
+
+    }
+}
+
+

@@ -1,0 +1,64 @@
+---
+##ansible-playbook node.yml -i localhost
+- hosts: localhost
+  remote_user: ec2-user
+  become: yes
+  become_method: sudo
+
+
+  tasks:
+  - name: install node repository
+    shell: /usr/bin/curl --silent --location https://rpm.nodesource.com/setup | bash -
+
+  - name: install node
+    yum: pkg=nodejs state=latest
+
+  - name: install gnome c++
+    yum: pkg=gcc-c++ state=latest
+
+  - name: install make
+    yum: pkg=make state=latest
+
+
+- hosts: localhost
+  remote_user: ec2-user
+  sudo: yes
+
+  tasks:
+  - name: install git
+    yum: pkg=git state=latest
+
+  - name: install forever package
+    npm: name=forever state=latest global=yes
+
+
+- hosts: localhost
+  remote_user: ec2-user
+
+  tasks:
+  - name: make directory for nodejs code
+    file: path=~/nodeDemo state=directory mode=0755  
+
+  - name: download nodejs code
+    git: repo=https://github.com/omarlari/nodeDemo.git dest=~/nodeDemo
+
+  - name: install nodejs packages from json
+    npm: path=~/nodeDemo
+
+  - name: install forever monitor into node directory
+    npm: name=forever-monitor path=~/nodeDemo
+
+
+
+- hosts: localhost
+  remote_user: ec2-user
+
+  tasks:
+  - name: get forever processes
+    command: forever list
+    register: forever_list
+    changed_when: false
+
+  - name: start nodejs nodeDemo
+    command: forever start ~/nodeDemo/app.js
+    when: "forever_list.stdout.find('~/nodeDemo/app.js') == -1"

@@ -1,0 +1,144 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description" : "ASG for launching group",
+    "Parameters" : {
+        "imageId" : {
+            "Description" : "Ami ID",
+            "Type" : "String",
+            "Default" : ""
+        },
+
+        "instanceType" : {
+            "Description" : "Instance size you would like to deploy",
+            "Type" : "String",
+            "Default" : ""
+        },
+
+        "nodeCount" : {
+            "Description" : "Number of desired Instances",
+            "Type" : "Number",
+            "Default" : 0
+        },
+
+        "subnetA" : {
+            "Description" : "Subnet to deploy",
+            "Type" : "String",
+            "Default" : ""
+        },
+
+        "subnetB" : {
+            "Description" : "Subnet to deploy",
+            "Type" : "String",
+            "Default" : ""
+        },
+
+        "subnetC" : {
+            "Description" : "Subnet to deploy",
+            "Type" : "String",
+            "Default" : ""
+        },
+
+        "demoAppElbSg" : {
+            "Description" : "Security group where you would like to deploy",
+            "Type" : "String",
+            "Default" : ""
+        },
+
+        "demoAppNodeSg" : {
+            "Description" : "Security group where you would like to deploy",
+            "Type" : "String",
+            "Default" : ""
+        }
+
+    },
+    "Resources" : {
+
+        "demoAppElb" : {
+            "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
+            "Properties" : {
+                "Listeners" : [ { 
+                    "LoadBalancerPort" : "80",
+                    "InstancePort" : "4443",
+                    "Protocol" : "HTTP"
+            } ],
+                "HealthCheck" : {
+                      "Target" : {
+                        "Fn::Join" : [ "", [ "HTTP:", "4443", "/" ] ]
+                      },
+                      "HealthyThreshold" : "3",
+                      "UnhealthyThreshold" : "5",
+                      "Interval" : "30",
+                      "Timeout" : "5"
+                    },
+                "Subnets" : [
+                    {"Ref" : "subnetA"}, {"Ref" : "subnetB"}, {"Ref" : "subnetC"}
+                ],    
+                "SecurityGroups" : [
+                    {"Ref" : "demoAppElbSg"}
+                ]   
+            }
+        },
+
+        "demoNodeAppAsg" : {
+            "Type" : "AWS::AutoScaling::AutoScalingGroup",
+            "Properties" : {
+                "AvailabilityZones" : [
+                    "us-west-2a",
+                    "us-west-2b",
+                    "us-west-2c"
+                ],
+                "LoadBalancerNames" : [
+                    {"Ref" : "demoAppElb"}
+                ],
+                "VPCZoneIdentifier" : [
+                    {
+                        "Ref" : "subnetA"
+                    },
+                    {
+                        "Ref" : "subnetB"
+                    },
+                    {
+                        "Ref" : "subnetC"
+                    }
+                ],
+                "LaunchConfigurationName" : {
+                    "Ref" : "launchConfig"
+                },
+                "MinSize" : "1",
+                "MaxSize" : "10",
+                "DesiredCapacity" : {
+                    "Ref" : "nodeCount"
+                }
+            }
+        },
+
+        "launchConfig" : {
+            "Type" : "AWS::AutoScaling::LaunchConfiguration",
+            "Properties" : {
+                "AssociatePublicIpAddress" : "True",
+                "ImageId" : {
+                    "Ref" : "imageId"
+                },
+                "InstanceType" : {
+                    "Ref" : "instanceType"
+                },
+                "KeyName" : "docker",
+                "SecurityGroups" : [
+                    {
+                        "Ref" : "demoAppNodeSg"
+                    }
+                ]
+            }
+        }
+
+    },
+
+    "Outputs" : {
+        "demoNodeAppAsg" : {
+            "Description" : "ASG ID of the newly created ASG",
+            "Value" : {
+                "Ref" : "demoNodeAppAsg"
+            }
+        }
+    }
+}

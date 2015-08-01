@@ -1,0 +1,34 @@
+Commands as root user
+
+$ ansible nodeservers -i nodeservers -m shell -a "/usr/bin/curl --silent --location https://rpm.nodesource.com/setup | bash -" -u ec2-user -U root --sudo
+
+$ ansible nodeservers -i nodeservers -m yum -a "pkg=nodejs state=latest" -u ec2-user -U root --sudo
+
+$ ansible nodeservers -i nodeservers -m yum -a "pkg=gcc-c++ state=latest" -u ec2-user -U root --sudo
+
+$ ansible nodeservers -i nodeservers -m yum -a "pkg=make state=latest" -u ec2-user -U root --sudo
+
+Commands as sudo
+
+$ ansible nodeservers -i nodeservers -m yum -a "pkg=git state=latest" -u ec2-user --sudo
+
+$ ansible nodeservers -i nodeservers -m npm -a "name=forever global=yes" -u ec2-user --sudo
+
+Git Code
+
+$ ansible nodeservers -i nodeservers -m git -a "repo=https://github.com/omarlari/nodeDemo.git dest=~/nodeDemo" -u ec2-user
+
+Node Install
+
+###should not need these:
+ansible nodeservers -i nodeservers -m npm -a "name=express path=~/./nodeDemo" -u ec2-user
+ansible nodeservers -i nodeservers -m npm -a "name=express-myconnection path=~/./nodeDemo" -u ec2-user
+ansible nodeservers -i nodeservers -m npm -a "name=jade path=~/./nodeDemo" -u ec2-user
+ansible nodeservers -i nodeservers -m npm -a "name=mysql path=~/./nodeDemo" -u ec2-user
+###
+
+$ ansible nodeservers -i nodeservers -m npm -a "path=/home/ec2-user/nodeDemo" -u ec2-user --sudo
+
+Start node
+
+$ ansible nodeservers -i nodeservers -m command -a "node ~/./nodeDemo/app.js" -u ec2-user

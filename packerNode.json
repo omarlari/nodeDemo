@@ -27,7 +27,7 @@
     },
     {
       "type": "ansible-local",
-      "playbook_file": "~/nodeDemo/nodeLocal.yml"
+      "playbook_file": "nodeLocal.yml"
     }
   ]
 }

@@ -24,7 +24,7 @@
         "sudo yum install -y gcc",
         "sudo pip install ansible"
       ]
-    }
+    },
     {
       "type": "ansible-local",
       "playbook_file": "nodeLocal.yml"

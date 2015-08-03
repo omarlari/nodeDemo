@@ -6,7 +6,8 @@
   gather_facts: false
 
   vars:
-     AmiId: "{{ lookup('file', '~/nodeDemo/aws.properties.sh }}"
+     AmiId: "{{ lookup('file', '~/nodeDemo/ami.id') }}"
+
 
   vars_files:
   - vars/{{ env }}.yml

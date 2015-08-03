@@ -122,7 +122,7 @@
                 "InstanceType" : {
                     "Ref" : "instanceType"
                 },
-                "KeyName" : "docker",
+                "KeyName" : "mck",
                 "SecurityGroups" : [
                     {
                         "Ref" : "demoAppNodeSg"

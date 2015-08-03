@@ -2,6 +2,7 @@
   "builders": [
     {
       "type": "amazon-ebs",
+      "ssh_pty": "true",
       "access_key": "",
       "secret_key": "",
       "region": "us-west-2",

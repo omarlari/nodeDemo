@@ -5,6 +5,9 @@
   connection: local
   gather_facts: false
 
+  vars:
+  - AmiId: "{{ lookup('file', '~/nodeDemo/aws.properties.sh"
+
   vars_files:
   - vars/{{ env }}.yml
 

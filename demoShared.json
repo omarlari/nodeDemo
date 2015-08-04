@@ -59,6 +59,18 @@
             }
         },
 
+        "pipelineRouteTableAssociation001": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "demoAppNodejsSubnetA"
+                },
+                "RouteTableId": {
+                    "Ref": "publicRouteTable"
+                }
+            }
+        },
+
         "demoAppNodejsSubnetB" : {
             "Type" : "AWS::EC2::Subnet",
             "Properties" : {
@@ -92,6 +104,18 @@
                         "Value" : "Public"
                     }
                 ]
+            }
+        },
+
+        "pipelineRouteTableAssociation002": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "demoAppNodejsSubnetB"
+                },
+                "RouteTableId": {
+                    "Ref": "publicRouteTable"
+                }
             }
         },
 
@@ -131,6 +155,18 @@
             }
         },
 
+        "pipelineRouteTableAssociation03": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "demoAppNodejsSubnetC"
+                },
+                "RouteTableId": {
+                    "Ref": "publicRouteTable"
+                }
+            }
+        },
+
         "demoAppDbSubnetA" : {
             "Type" : "AWS::EC2::Subnet",
             "Properties" : {
@@ -164,6 +200,18 @@
                         "Value" : "Public"
                     }
                 ]
+            }
+        },
+
+        "pipelineRouteTableAssociation004": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "demoAppDbSubnetA"
+                },
+                "RouteTableId": {
+                    "Ref": "publicRouteTable"
+                }
             }
         },
 
@@ -203,6 +251,18 @@
             }
         },
 
+        "pipelineRouteTableAssociation005": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "demoAppDbSubnetB"
+                },
+                "RouteTableId": {
+                    "Ref": "publicRouteTable"
+                }
+            }
+        },
+
         "demoAppDbSubnetC" : {
             "Type" : "AWS::EC2::Subnet",
             "Properties" : {
@@ -236,6 +296,18 @@
                         "Value" : "Public"
                     }
                 ]
+            }
+        },
+
+        "pipelineRouteTableAssociation006": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "demoAppDbSubnetC"
+                },
+                "RouteTableId": {
+                    "Ref": "publicRouteTable"
+                }
             }
         },
 

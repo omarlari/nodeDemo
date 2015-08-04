@@ -6,7 +6,7 @@
   gather_facts: false
 
   vars:
-     AmiId: "{{ lookup('file', '~/nodeDemo/ami.id') }}"
+     AmiId: "{{ lookup('file', '~/nodeParameters/ami.id') }}"
 
 
   vars_files:

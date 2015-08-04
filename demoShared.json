@@ -19,6 +19,12 @@
             "Type" : "String",
             "Default" : "English101",
             "ConstraintDescription" : ""
+        },
+        "publicRouteTable" : {
+            "Description" : "",
+            "Type" : "String",
+            "Default" : "",
+            "Constraint Description" : ""
         }
     },
     "Resources" : {

@@ -52,13 +52,9 @@
 
 - hosts: localhost
   remote_user: ec2-user
+  become: yes
+  become_method: sudo
 
   tasks:
-  - name: get forever processes
-    command: forever list
-    register: forever_list
-    changed_when: false
-
-  - name: start nodejs nodeDemo
-    command: forever start ~/nodeDemo/app.js
-    when: "forever_list.stdout.find('~/nodeDemo/app.js') == -1"
+  - name: add forever process to startup
+    lineinfile: /etc/rc.local state=present line="forever start /home/ec2-user/nodeDemo/app.js"

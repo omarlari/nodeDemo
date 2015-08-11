@@ -114,6 +114,23 @@
 
         "launchConfig" : {
             "Type" : "AWS::AutoScaling::LaunchConfiguration",
+            "Metadata" : {
+                "Comment1": "Configure and start cloud agent",
+                "AWS::CloudFormation::Init": {
+                    "configSets": {
+                        "Configure": [ "Configure" ]
+                    },
+                    "Configure": {
+                        "packages": {},
+                        "commands": {
+                            "startAppjs" : {
+                                "command" : "forever start app.js",
+                                "cwd" : "~/nodeDemo/"
+                            }
+                        }
+                    }
+                }
+            },
             "Properties" : {
                 "AssociatePublicIpAddress" : "True",
                 "ImageId" : {

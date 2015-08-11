@@ -57,4 +57,4 @@
 
   tasks:
   - name: add forever process to startup
-    lineinfile: /etc/rc.local state=present line="forever start /home/ec2-user/nodeDemo/app.js"
+    lineinfile: dest=/etc/rc.local state=present line="forever start /home/ec2-user/nodeDemo/app.js"

@@ -16,7 +16,7 @@
 
   - name: Provision demo shared resources
     cloudformation:
-      stack_name: "{{stackPrefix}}-sharedResources"
+      stack_name: "demoNode-sharedResources"
       state: "present"
       disable_rollback: true
       region: "us-west-2"

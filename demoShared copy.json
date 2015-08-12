@@ -400,7 +400,63 @@
                 "GroupDescription" : "app security group",
                 "VpcId" : {
                     "Ref" : "vpc"
-                }
+                },
+                "SecurityGroupIngress" : [
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "4443",
+                        "ToPort" : "4443",
+                        "CidrIp" : "67.188.201.39/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "22",
+                        "ToPort" : "22",
+                        "CidrIp" : "67.188.201.39/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "4443",
+                        "ToPort" : "4443",
+                        "CidrIp" : "12.130.117.130/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "22",
+                        "ToPort" : "22",
+                        "CidrIp" : "12.130.117.130/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "4443",
+                        "ToPort" : "4443",
+                        "CidrIp" : "143.112.144.129/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "22",
+                        "ToPort" : "22",
+                        "CidrIp" : "143.112.144.129/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "4443",
+                        "ToPort" : "4443",
+                        "CidrIp" : "23.126.154.46/32"
+                    },
+                    {
+                        "IpProtocol" : "tcp",
+                        "FromPort" : "22",
+                        "ToPort" : "22",
+                        "CidrIp" : "23.126.154.46/32"
+                    }
+                ],
+                "SecurityGroupEgress" : [
+                    {
+                        "IpProtocol" : "-1",
+                        "CidrIp" : "0.0.0.0/0"
+                    }
+                ]
         }},
 
         "demoAppIngress0201" : {
@@ -439,7 +495,15 @@
                 "GroupDescription" : "elb security group",
                 "VpcId" : {
                     "Ref" : "vpc"
-                }
+                },
+                "SecurityGroupIngress" : [
+                    {
+                        "IpProtocol" : "tcp",
+                        "CidrIp" : "0.0.0.0/0",
+                        "FromPort" : "80",
+                        "ToPort" : "80"
+                    }
+                ]
             }
         },
 

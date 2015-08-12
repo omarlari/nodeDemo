@@ -122,7 +122,6 @@
                 "InstanceType" : {
                     "Ref" : "instanceType"
                 },
-                "KeyName" : "mck",
                 "SecurityGroups" : [
                     {
                         "Ref" : "demoAppNodeSg"

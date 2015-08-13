@@ -65,7 +65,7 @@
             }
         },
 
-        "pipelineRouteTableAssociation001": {
+        "demoRouteTableAssociation001": {
             "Type": "AWS::EC2::SubnetRouteTableAssociation",
             "Properties": {
                 "SubnetId": {
@@ -113,7 +113,7 @@
             }
         },
 
-        "pipelineRouteTableAssociation002": {
+        "demoRouteTableAssociation002": {
             "Type": "AWS::EC2::SubnetRouteTableAssociation",
             "Properties": {
                 "SubnetId": {
@@ -161,7 +161,7 @@
             }
         },
 
-        "pipelineRouteTableAssociation03": {
+        "demoRouteTableAssociation03": {
             "Type": "AWS::EC2::SubnetRouteTableAssociation",
             "Properties": {
                 "SubnetId": {
@@ -209,7 +209,7 @@
             }
         },
 
-        "pipelineRouteTableAssociation004": {
+        "demoRouteTableAssociation004": {
             "Type": "AWS::EC2::SubnetRouteTableAssociation",
             "Properties": {
                 "SubnetId": {
@@ -257,7 +257,7 @@
             }
         },
 
-        "pipelineRouteTableAssociation005": {
+        "demoRouteTableAssociation005": {
             "Type": "AWS::EC2::SubnetRouteTableAssociation",
             "Properties": {
                 "SubnetId": {
@@ -305,7 +305,7 @@
             }
         },
 
-        "pipelineRouteTableAssociation006": {
+        "demoRouteTableAssociation006": {
             "Type": "AWS::EC2::SubnetRouteTableAssociation",
             "Properties": {
                 "SubnetId": {
@@ -340,7 +340,7 @@
                 "BackupRetentionPeriod" : "30",
                 "DBInstanceClass" : "db.t1.micro",
                 "DBInstanceIdentifier" : "demo",
-                "DBName" : "demoNodejsApp",
+                "DBName" : "nodejs",
                 "DBSubnetGroupName" : {
                     "Ref" : "demoRdsSubnetGroup"
                 },
@@ -379,7 +379,20 @@
             }
         },
 
-        
+        "demoAppEgress0201" : {
+            "Type" : "AWS::EC2::SecurityGroupEgress",
+            "Properties" : {
+                "GroupId" : {
+                    "Ref" : "demoAppElbSg"
+                },
+                "IpProtocol" : "tcp",
+                "FromPort" : "4443",
+                "ToPort" : "4443",
+                "DestinationSecurityGroupId" : {
+                    "Ref" : "demoAppNodeSg"
+                }
+            }
+        },
 
         "demoAppNodeSg" : {
             "Type" : "AWS::EC2::SecurityGroup",
@@ -423,7 +436,7 @@
         "demoAppDbSg" : {
             "Type" : "AWS::EC2::SecurityGroup",
             "Properties" : {
-                "GroupDescription" : "elb security group",
+                "GroupDescription" : "db security group",
                 "VpcId" : {
                     "Ref" : "vpc"
                 }

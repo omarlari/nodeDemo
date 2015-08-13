@@ -379,7 +379,7 @@
             }
         },
 
-        "demoAppEgress0201" : {
+        "demoAppElbEgress001" : {
             "Type" : "AWS::EC2::SecurityGroupEgress",
             "Properties" : {
                 "GroupId" : {
@@ -403,7 +403,7 @@
                 }
         }},
 
-        "demoAppIngress0201" : {
+        "demoAppNodeIngress001" : {
             "Type" : "AWS::EC2::SecurityGroupIngress",
             "Properties" : {
                 "GroupId" : {
@@ -418,7 +418,7 @@
             }
         },
 
-        "demoAppEgress0201" : {
+        "demoAppNodeEgress001" : {
             "Type" : "AWS::EC2::SecurityGroupEgress",
             "Properties" : {
                 "GroupId" : {
@@ -443,7 +443,7 @@
             }
         },
 
-        "demoDbIngress0301" : {
+        "demoDbIngress001" : {
             "Type" : "AWS::EC2::SecurityGroupIngress",
             "Properties" : {
                 "GroupId" : {
@@ -454,6 +454,36 @@
                 "ToPort" : "3306",
                 "SourceSecurityGroupId" : {
                     "Ref" : "demoAppNodeSg"
+                }
+            }
+        },
+
+        "demoDbIngress002" : {
+            "Type" : "AWS::EC2::SecurityGroupIngress",
+            "Properties" : {
+                "GroupId" : {
+                    "Ref" : "demoAppDbSg"
+                },
+                "IpProtocol" : "tcp",
+                "FromPort" : "-1",
+                "ToPort" : "-1",
+                "SourceSecurityGroupId" : {
+                    "Ref" : "demoAppDbSg"
+                }
+            }
+        },
+
+        "demoDbEgress001" : {
+            "Type" : "AWS::EC2::SecurityGroupIngress",
+            "Properties" : {
+                "GroupId" : {
+                    "Ref" : "demoAppDbSg"
+                },
+                "IpProtocol" : "tcp",
+                "FromPort" : "-1",
+                "ToPort" : "-1",
+                "SourceSecurityGroupId" : {
+                    "Ref" : "demoAppDbSg"
                 }
             }
         }

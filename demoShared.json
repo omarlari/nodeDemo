@@ -464,9 +464,7 @@
                 "GroupId" : {
                     "Ref" : "demoAppDbSg"
                 },
-                "IpProtocol" : "tcp",
-                "FromPort" : "-1",
-                "ToPort" : "-1",
+                "IpProtocol" : "-1",
                 "SourceSecurityGroupId" : {
                     "Ref" : "demoAppDbSg"
                 }
@@ -479,9 +477,7 @@
                 "GroupId" : {
                     "Ref" : "demoAppDbSg"
                 },
-                "IpProtocol" : "tcp",
-                "FromPort" : "-1",
-                "ToPort" : "-1",
+                "IpProtocol" : "-1",
                 "SourceSecurityGroupId" : {
                     "Ref" : "demoAppDbSg"
                 }

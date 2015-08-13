@@ -471,8 +471,8 @@
             }
         },
 
-        "demoDbEgress001" : {
-            "Type" : "AWS::EC2::SecurityGroupIngress",
+        "demoDbEgress002" : {
+            "Type" : "AWS::EC2::SecurityGroupEgress",
             "Properties" : {
                 "GroupId" : {
                     "Ref" : "demoAppDbSg"
@@ -482,7 +482,7 @@
                     "Ref" : "demoAppDbSg"
                 }
             }
-        }
+        }        
 
     },
     "Outputs" : {

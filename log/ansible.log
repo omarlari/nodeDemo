@@ -10607,3 +10607,182 @@ AWS4-HMAC-SHA256
 2015-07-30 13:45:52,135 p=16583 u=omar |  PLAY RECAP ******************************************************************** 
 2015-07-30 13:45:52,135 p=16583 u=omar |  52.10.127.255              : ok=16   changed=10   unreachable=0    failed=0   
 2015-07-30 13:45:52,135 p=16583 u=omar |  52.11.56.192               : ok=16   changed=10   unreachable=0    failed=0   
+2015-08-12 15:25:05,970 p=52884 u=omar |   
+2015-08-12 15:25:05,970 p=52884 u=omar |  /usr/local/bin/ansible-playbook main2.yml -i inventory -e env=env99
+2015-08-12 15:25:05,970 p=52884 u=omar |   
+2015-08-12 15:25:06,011 p=52884 u=omar |   [WARNING]: non fatal error while trying to template play variables: Failed to
+template {{ lookup('file', '~/nodeParameters/ami.id') }}: could not locate file
+in lookup: ~/nodeParameters/ami.id
+
+2015-08-12 15:25:06,095 p=52884 u=omar |  PLAY [Provision nodejs demo] ************************************************** 
+2015-08-12 15:25:06,095 p=52884 u=omar |  TASK: [Provision demo shared resources] *************************************** 
+2015-08-12 15:25:06,175 boto Using access key found in environment variable.
+2015-08-12 15:25:06,175 boto Using secret key found in environment variable.
+2015-08-12 15:25:06,175 boto Method: GET
+2015-08-12 15:25:06,175 boto Path: /
+2015-08-12 15:25:06,175 boto Data: 
+2015-08-12 15:25:06,176 boto Headers: {}
+2015-08-12 15:25:06,176 boto Host: cloudformation.us-west-2.amazonaws.com
+2015-08-12 15:25:06,176 boto Port: 443
+2015-08-12 15:25:06,176 boto Params: {'StackName': 'cidrBlock99-vpc', 'Action': 'DescribeStacks', 'Version': '2010-05-15'}
+2015-08-12 15:25:06,176 boto establishing HTTPS connection: host=cloudformation.us-west-2.amazonaws.com, kwargs={'port': 443, 'timeout': 70}
+2015-08-12 15:25:06,176 boto Token: None
+2015-08-12 15:25:06,177 boto CanonicalRequest:
+GET
+/
+Action=DescribeStacks&StackName=cidrBlock99-vpc&Version=2010-05-15
+host:cloudformation.us-west-2.amazonaws.com
+x-amz-date:20150812T222506Z
+
+host;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2015-08-12 15:25:06,177 boto StringToSign:
+AWS4-HMAC-SHA256
+20150812T222506Z
+20150812/us-west-2/cloudformation/aws4_request
+30bc227936313299534c49976f460655107fe2307d2b6e87b9fbc798248533f0
+2015-08-12 15:25:06,177 boto Signature:
+e79ae01530f04ae901bbc937fa1fd23e204c9adce12f89bdccc29ca68f801151
+2015-08-12 15:25:06,177 boto Final headers: {'Content-Length': '0', 'Host': u'cloudformation.us-west-2.amazonaws.com', 'Authorization': u'AWS4-HMAC-SHA256 Credential=AKIAIFOJBQE5C2DOPSWQ/20150812/us-west-2/cloudformation/aws4_request,SignedHeaders=host;x-amz-date,Signature=e79ae01530f04ae901bbc937fa1fd23e204c9adce12f89bdccc29ca68f801151', 'X-Amz-Date': '20150812T222506Z', 'User-Agent': 'Boto/2.38.0 Python/2.7.6 Darwin/14.4.0'}
+2015-08-12 15:25:06,344 boto wrapping ssl socket; CA certificate file=/Library/Python/2.7/site-packages/boto/cacerts/cacerts.txt
+2015-08-12 15:25:06,442 boto validating server certificate: hostname=cloudformation.us-west-2.amazonaws.com, certificate hosts=['cloudformation.us-west-2.amazonaws.com']
+2015-08-12 15:25:06,535 boto Response headers: [('x-amzn-requestid', 'fa78a0f2-4140-11e5-8049-3185f0e747c4'), ('date', 'Wed, 12 Aug 2015 22:25:03 GMT'), ('content-length', '1725'), ('content-type', 'text/xml')]
+2015-08-12 15:25:06,535 boto <DescribeStacksResponse xmlns="http://cloudformation.amazonaws.com/doc/2010-05-15/">
+  <DescribeStacksResult>
+    <Stacks>
+      <member>
+        <Tags>
+          <member>
+            <Value>ansible-cloudformation</Value>
+            <Key>Stack</Key>
+          </member>
+          <member>
+            <Value>Engineering</Value>
+            <Key>Env</Key>
+          </member>
+        </Tags>
+        <StackId>arn:aws:cloudformation:us-west-2:391886132495:stack/cidrBlock99-vpc/14e444a0-379f-11e5-8af4-50d50205787c</StackId>
+        <StackStatus>CREATE_COMPLETE</StackStatus>
+        <StackName>cidrBlock99-vpc</StackName>
+        <Description>Template to make VPC with private and public subnet</Description>
+        <NotificationARNs/>
+        <CreationTime>2015-07-31T16:13:29.466Z</CreationTime>
+        <DisableRollback>true</DisableRollback>
+        <Parameters>
+          <member>
+            <ParameterValue>99</ParameterValue>
+            <ParameterKey>secondOctect</ParameterKey>
+          </member>
+        </Parameters>
+        <Capabilities>
+          <member>CAPABILITY_IAM</member>
+        </Capabilities>
+        <Outputs>
+          <member>
+            <OutputValue>vpc-21325044</OutputValue>
+            <Description>VpcId</Description>
+            <OutputKey>vpc</OutputKey>
+          </member>
+          <member>
+            <OutputValue>rtb-66dbae03</OutputValue>
+            <Description>public route table id</Description>
+            <OutputKey>publicRouteTable</OutputKey>
+          </member>
+        </Outputs>
+      </member>
+    </Stacks>
+  </DescribeStacksResult>
+  <ResponseMetadata>
+    <RequestId>fa78a0f2-4140-11e5-8049-3185f0e747c4</RequestId>
+  </ResponseMetadata>
+</DescribeStacksResponse>
+
+2015-08-12 15:25:06,547 boto Using access key found in environment variable.
+2015-08-12 15:25:06,547 boto Using secret key found in environment variable.
+2015-08-12 15:25:06,547 boto Method: GET
+2015-08-12 15:25:06,547 boto Path: /
+2015-08-12 15:25:06,547 boto Data: 
+2015-08-12 15:25:06,547 boto Headers: {}
+2015-08-12 15:25:06,548 boto Host: cloudformation.us-west-2.amazonaws.com
+2015-08-12 15:25:06,548 boto Port: 443
+2015-08-12 15:25:06,548 boto Params: {'StackName': 'cidrBlock99-vpc', 'Action': 'DescribeStacks', 'Version': '2010-05-15'}
+2015-08-12 15:25:06,548 boto establishing HTTPS connection: host=cloudformation.us-west-2.amazonaws.com, kwargs={'port': 443, 'timeout': 70}
+2015-08-12 15:25:06,548 boto Token: None
+2015-08-12 15:25:06,548 boto CanonicalRequest:
+GET
+/
+Action=DescribeStacks&StackName=cidrBlock99-vpc&Version=2010-05-15
+host:cloudformation.us-west-2.amazonaws.com
+x-amz-date:20150812T222506Z
+
+host;x-amz-date
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+2015-08-12 15:25:06,548 boto StringToSign:
+AWS4-HMAC-SHA256
+20150812T222506Z
+20150812/us-west-2/cloudformation/aws4_request
+30bc227936313299534c49976f460655107fe2307d2b6e87b9fbc798248533f0
+2015-08-12 15:25:06,548 boto Signature:
+e79ae01530f04ae901bbc937fa1fd23e204c9adce12f89bdccc29ca68f801151
+2015-08-12 15:25:06,548 boto Final headers: {'Content-Length': '0', 'Host': u'cloudformation.us-west-2.amazonaws.com', 'Authorization': u'AWS4-HMAC-SHA256 Credential=AKIAIFOJBQE5C2DOPSWQ/20150812/us-west-2/cloudformation/aws4_request,SignedHeaders=host;x-amz-date,Signature=e79ae01530f04ae901bbc937fa1fd23e204c9adce12f89bdccc29ca68f801151', 'X-Amz-Date': '20150812T222506Z', 'User-Agent': 'Boto/2.38.0 Python/2.7.6 Darwin/14.4.0'}
+2015-08-12 15:25:06,586 boto wrapping ssl socket; CA certificate file=/Library/Python/2.7/site-packages/boto/cacerts/cacerts.txt
+2015-08-12 15:25:06,670 boto validating server certificate: hostname=cloudformation.us-west-2.amazonaws.com, certificate hosts=['cloudformation.us-west-2.amazonaws.com']
+2015-08-12 15:25:06,748 boto Response headers: [('x-amzn-requestid', 'fa9bb971-4140-11e5-8c66-cb429490fc2e'), ('date', 'Wed, 12 Aug 2015 22:25:04 GMT'), ('content-length', '1725'), ('content-type', 'text/xml')]
+2015-08-12 15:25:06,749 boto <DescribeStacksResponse xmlns="http://cloudformation.amazonaws.com/doc/2010-05-15/">
+  <DescribeStacksResult>
+    <Stacks>
+      <member>
+        <Tags>
+          <member>
+            <Value>ansible-cloudformation</Value>
+            <Key>Stack</Key>
+          </member>
+          <member>
+            <Value>Engineering</Value>
+            <Key>Env</Key>
+          </member>
+        </Tags>
+        <StackId>arn:aws:cloudformation:us-west-2:391886132495:stack/cidrBlock99-vpc/14e444a0-379f-11e5-8af4-50d50205787c</StackId>
+        <StackStatus>CREATE_COMPLETE</StackStatus>
+        <StackName>cidrBlock99-vpc</StackName>
+        <Description>Template to make VPC with private and public subnet</Description>
+        <NotificationARNs/>
+        <CreationTime>2015-07-31T16:13:29.466Z</CreationTime>
+        <Parameters>
+          <member>
+            <ParameterValue>99</ParameterValue>
+            <ParameterKey>secondOctect</ParameterKey>
+          </member>
+        </Parameters>
+        <Capabilities>
+          <member>CAPABILITY_IAM</member>
+        </Capabilities>
+        <DisableRollback>true</DisableRollback>
+        <Outputs>
+          <member>
+            <OutputValue>vpc-21325044</OutputValue>
+            <Description>VpcId</Description>
+            <OutputKey>vpc</OutputKey>
+          </member>
+          <member>
+            <OutputValue>rtb-66dbae03</OutputValue>
+            <Description>public route table id</Description>
+            <OutputKey>publicRouteTable</OutputKey>
+          </member>
+        </Outputs>
+      </member>
+    </Stacks>
+  </DescribeStacksResult>
+  <ResponseMetadata>
+    <RequestId>fa9bb971-4140-11e5-8c66-cb429490fc2e</RequestId>
+  </ResponseMetadata>
+</DescribeStacksResponse>
+
+2015-08-12 15:25:07,704 p=52884 u=omar |  ok: [localhost]
+2015-08-12 15:25:07,704 p=52884 u=omar |  TASK: [Provision demo cluster] ************************************************ 
+2015-08-12 15:25:07,708 p=52884 u=omar |  fatal: [localhost] => Failed to template {{AmiId}}: Failed to template {{ lookup('file', '~/nodeParameters/ami.id') }}: could not locate file in lookup: ~/nodeParameters/ami.id
+2015-08-12 15:25:07,709 p=52884 u=omar |  FATAL: all hosts have already failed -- aborting
+2015-08-12 15:25:07,709 p=52884 u=omar |  PLAY RECAP ******************************************************************** 
+2015-08-12 15:25:07,717 p=52884 u=omar |             to retry, use: --limit @/Users/omar/main2.retry
+
+2015-08-12 15:25:07,717 p=52884 u=omar |  localhost                  : ok=1    changed=0    unreachable=1    failed=0   

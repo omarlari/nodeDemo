@@ -379,20 +379,7 @@
             }
         },
 
-        "demoAppEgress0201" : {
-            "Type" : "AWS::EC2::SecurityGroupEgress",
-            "Properties" : {
-                "GroupId" : {
-                    "Ref" : "demoAppElbSg"
-                },
-                "IpProtocol" : "tcp",
-                "FromPort" : "4443",
-                "ToPort" : "4443",
-                "DestinationSecurityGroupId" : {
-                    "Ref" : "demoAppNodeSg"
-                }
-            }
-        },
+        
 
         "demoAppNodeSg" : {
             "Type" : "AWS::EC2::SecurityGroup",

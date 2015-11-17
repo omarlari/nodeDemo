@@ -335,7 +335,7 @@
         "demoAppRds" : {
             "Type" : "AWS::RDS::DBInstance",
             "Properties" : {
-                "AllocatedStorage" : "200",
+                "AllocatedStorage" : "10",
                 "AllowMajorVersionUpgrade" : "false",
                 "BackupRetentionPeriod" : "30",
                 "DBInstanceClass" : "db.t1.micro",
@@ -345,12 +345,12 @@
                     "Ref" : "demoRdsSubnetGroup"
                 },
                 "Engine" : "MySQL",
-                "Iops" : "1000",
+                "Iops" : "100",
                 "MasterUsername" : "root",
                 "MasterUserPassword" : {
                     "Ref" : "rootDbPassword"
                 },
-                "MultiAZ" : "true",
+                "MultiAZ" : "false",
                 "PreferredBackupWindow" : "2:00-2:30",
                 "PreferredMaintenanceWindow" : "sat:03:00-sat:03:30",
                 "VPCSecurityGroups" : [

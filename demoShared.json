@@ -341,7 +341,7 @@
                 "DBInstanceClass" : "db.t1.micro",
                 "DBInstanceIdentifier" : "demo",
                 "DBName" : "nodejs",
-                "DBSnapShotIdentifier" : "datarefresh",
+                "DBSnapshotIdentifier" : "datarefresh",
                 "DBSubnetGroupName" : {
                     "Ref" : "demoRdsSubnetGroup"
                 },

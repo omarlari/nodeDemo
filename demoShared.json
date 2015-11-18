@@ -345,7 +345,7 @@
                     "Ref" : "demoRdsSubnetGroup"
                 },
                 "Engine" : "MySQL",
-                "Iops" : "100",
+                "Iops" : "1000",
                 "MasterUsername" : "root",
                 "MasterUserPassword" : {
                     "Ref" : "rootDbPassword"

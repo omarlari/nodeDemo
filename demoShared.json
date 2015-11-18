@@ -340,7 +340,6 @@
                 "BackupRetentionPeriod" : "30",
                 "DBInstanceClass" : "db.t1.micro",
                 "DBInstanceIdentifier" : "demo",
-                "DBName" : "nodejs",
                 "DBSnapshotIdentifier" : "datarefresh",
                 "DBSubnetGroupName" : {
                     "Ref" : "demoRdsSubnetGroup"

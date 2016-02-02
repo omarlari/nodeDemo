@@ -46,7 +46,7 @@
         subnetC: "{{demoShared.stack_outputs.demoAppNodejsSubnetC}}"
         demoAppElbSg: "{{demoShared.stack_outputs.demoAppElbSg}}"
         demoAppNodeSg: "{{demoShared.stack_outputs.demoAppNodeSg}}"
-        key: "EC2KeyPair"
+        key: "{{EC2KeyPair}}"
 
       tags:
         Stack: "ansible-cloudformation"

@@ -1,0 +1,34 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "ssh_pty": "true",
+      "access_key": "",
+      "secret_key": "",
+      "region": "us-west-2",
+      "source_ami": "ami-f0091d91",
+      "instance_type": "t2.large",
+      "ssh_username": "ec2-user",
+      "ami_name": "hybris {{timestamp}}",
+      "vpc_id": "vpc-21325044",
+      "subnet_id": "subnet-1a7b057f",
+      "associate_public_ip_address": "true"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sleep 10",
+        "sudo easy_install pip",
+        "sudo yum install -y gcc",
+        "sudo pip install ansible"
+      ]
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "amazonLinux.yml"
+    }
+  ]
+}

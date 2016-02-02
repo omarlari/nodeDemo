@@ -54,7 +54,7 @@
             "Description" : "key",
             "Type" : "String",
             "Default" : ""
-        },
+        }
 
     },
     "Resources" : {
@@ -127,7 +127,7 @@
                 },
                 "Key" : {
                     "Ref" : "key"
-                    },
+                },
                 "InstanceType" : {
                     "Ref" : "instanceType"
                 },

@@ -48,7 +48,13 @@
             "Description" : "Security group where you would like to deploy",
             "Type" : "String",
             "Default" : ""
-        }
+        },
+
+        "key" : {
+            "Description" : "key",
+            "Type" : "String",
+            "Default" : ""
+        },
 
     },
     "Resources" : {
@@ -119,6 +125,9 @@
                 "ImageId" : {
                     "Ref" : "imageId"
                 },
+                "Key" : {
+                    "Ref" : "key"
+                    },
                 "InstanceType" : {
                     "Ref" : "instanceType"
                 },

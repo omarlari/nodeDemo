@@ -29,7 +29,7 @@
     yum: pkg=git state=latest
 
   - name: install forever package
-    shell: npm install forever
+    npm: name=forever global=yes
 
 
 - hosts: localhost

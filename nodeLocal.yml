@@ -8,7 +8,7 @@
 
   tasks:
   - name: install node repository
-    shell: /usr/bin/curl --silent --location https://rpm.nodesource.com/setup | bash -
+    shell: /usr/bin/curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
 
   - name: install node
     yum: pkg=nodejs state=latest
@@ -29,7 +29,7 @@
     yum: pkg=git state=latest
 
   - name: install forever package
-    npm: name=forever state=latest global=yes
+    shell: npm install forever
 
 
 - hosts: localhost

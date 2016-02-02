@@ -125,7 +125,7 @@
                 "ImageId" : {
                     "Ref" : "imageId"
                 },
-                "Key" : {
+                "KeyName" : {
                     "Ref" : "key"
                 },
                 "InstanceType" : {

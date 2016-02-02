@@ -48,12 +48,6 @@
             "Description" : "Security group where you would like to deploy",
             "Type" : "String",
             "Default" : ""
-        },
-
-        "key" : {
-            "Description" : "key",
-            "Type" : "String",
-            "Default" : ""
         }
 
     },
@@ -124,9 +118,6 @@
                 "AssociatePublicIpAddress" : "True",
                 "ImageId" : {
                     "Ref" : "imageId"
-                },
-                "KeyName" : {
-                    "Ref" : "key"
                 },
                 "InstanceType" : {
                     "Ref" : "instanceType"

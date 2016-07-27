@@ -340,7 +340,6 @@
                 "BackupRetentionPeriod" : "30",
                 "DBInstanceClass" : "db.t1.micro",
                 "DBInstanceIdentifier" : "demo",
-                "DBSnapshotIdentifier" : "datarefresh",
                 "DBSubnetGroupName" : {
                     "Ref" : "demoRdsSubnetGroup"
                 },
@@ -482,7 +481,7 @@
                     "Ref" : "demoAppDbSg"
                 }
             }
-        }        
+        }
 
     },
     "Outputs" : {
@@ -524,5 +523,3 @@
 
     }
 }
-
-

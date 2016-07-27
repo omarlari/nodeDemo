@@ -6,7 +6,7 @@ AWS_STACK_PREFIX=$(cat ~/nodeDemo/vars/env99.yml | grep stackPrefix | cut -d: -f
 AWS_STACK_NO=$(aws cloudformation describe-stacks --stack-name $AWS_STACK_PREFIX-serverCluster --query 'Stacks[*].StackId' --output text)
 
 # Find out what the ID of the hosted zone is that we're updating
-AWS_EXT_DNS=$(aws route53 list-hosted-zones | grep -B 1 mckaws.omarlari.com | grep Id | awk -F\/ '{ print $3 }' | cut -d\" -f 1 | sed 2d)
+AWS_EXT_DNS=$(aws route53 list-hosted-zones | grep -B 1 aws.omarlari.com | grep Id | awk -F\/ '{ print $3 }' | cut -d\" -f 1 | sed 2d)
 
 # Get the name of the ELB that was created by CFN
 AWS_STACK_ELB=$(aws cloudformation list-stack-resources --stack-name $AWS_STACK_NO | grep -C 3 AWS::Elastic | grep Physical | awk -F\" '{ print $4 }')
@@ -26,7 +26,7 @@ cat > modify-dns.json << EOF
     {
       "Action": "",
       "ResourceRecordSet": {
-        "Name": "nodedemo.mckaws.omarlari.com.",
+        "Name": "nodedemo.aws.omarlari.com.",
         "Type": "A",
         "AliasTarget": {
           "HostedZoneId": "",
@@ -40,7 +40,7 @@ cat > modify-dns.json << EOF
 EOF
 
 # Check if the name record already exists
-AWS_DNS=$(aws route53 list-resource-record-sets --hosted-zone-id $AWS_EXT_DNS | grep nodedemo.mckaws.omarlari.com | awk -F\" '{ print $4 }')
+AWS_DNS=$(aws route53 list-resource-record-sets --hosted-zone-id $AWS_EXT_DNS | grep nodedemo.aws.omarlari.com | awk -F\" '{ print $4 }')
 
 # Use the result of the DNS Query to control the type of DNS update
 if [ -n "$AWS_DNS" ]; then

@@ -10,8 +10,8 @@
       "instance_type": "t2.micro",
       "ssh_username": "ec2-user",
       "ami_name": "node {{timestamp}}",
-      "vpc_id": "vpc-21325044",
-      "subnet_id": "subnet-1a7b057f",
+      "vpc_id": "vpc-54ce6130",
+      "subnet_id": "subnet-ad17bcc9",
       "associate_public_ip_address": "true"
     }
   ],

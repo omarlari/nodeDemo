@@ -8,7 +8,6 @@
   vars:
      AmiId: "{{ lookup('file', '~/nodeParameters/ami.id') }}"
 
-
   vars_files:
   - vars/{{ env }}.yml
 

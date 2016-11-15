@@ -22,8 +22,8 @@
       template: "demoShared.json"
       template_parameters:
         secondOctect: "{{SecondOctect}}"
-        vpc: "{{ lookup('cloudformation', 'us-west-2/cidrBlock99-vpc/output/vpc') }}"
-        publicRouteTable: "{{ lookup('cloudformation', 'us-west-2/cidrBlock99-publicRouting/output/publicRouteTable') }}"
+        vpc: "vpc-54ce6130"
+        publicRouteTable: "rtb-0c2cb868"
       tags:
         Stack: "ansible-cloudformation"
         Env: "Engineering"

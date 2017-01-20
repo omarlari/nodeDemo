@@ -1,9 +1,0 @@
----
-#https://discovery.etcd.io/new?size=3
-vpcTemplateName: "cidrBlock99-vpc"
-stackPrefix: demoNodeV6
-#EC2KeyPair: mck
-SecondOctect: "99"
-#AmiId: "ami-99bef1a9"
-Ec2InstanceType: "t2.micro"
-instanceCount: "2"
